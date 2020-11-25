@@ -44,7 +44,8 @@ def new_contact():
 
     return render_template('web/new_contact.html', form=form)
 
-
+def getApp():   
+    return app
 @app.route("/edit_contact/<id>", methods=('GET', 'POST'))
 def edit_contact(id):
     '''
