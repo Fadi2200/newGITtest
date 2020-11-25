@@ -1,0 +1,32 @@
+{% extends 'layouts/master.html' %}
+{% block title %}View{% endblock %}
+{% block body %}
+<h1>Motors</h1>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th scope="col">kennzeichen</th>
+			<th scope="col">barcode</th>
+			<th scope="col">herkunft</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for contact in contacts %}
+		<tr>
+			<td>{{ contact.kennzeichen }}</td>
+			<td>{{ contact.barcode }}</td>
+			<td>{{ contact.herkunft }}</td>
+			<td class="text-right">
+				<div class="row">
+					<form action="{{ url_for('contacts_delete') }}" method="post" class="pull-right">
+						<input type="hidden" name="id" value="{{ contact.id }}">
+						<input type="submit" class="btn btn-danger" data-toggle="confirmation" {# data-title="¿Estas seguro?" #} value="Delete">
+					</form>
+					<a class="btn btn-primary pull-right" href="{{ url_for('edit_contact', id=contact.id) }}">Edit</a>
+				</div>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}
