@@ -7,6 +7,7 @@ fake = Factory.create()
 # Reload tables
 db.drop_all()
 db.create_all()
+print("executed")
 # Make 100 fake contacts
 # for num in range(2):
 #     fullname = fake.name().split()
